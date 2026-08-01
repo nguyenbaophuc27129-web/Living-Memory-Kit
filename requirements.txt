@@ -1,6 +1,6 @@
 streamlit>=1.38
 chromadb>=0.5
 sentence-transformers>=3.0
-anthropic>=0.34
+google-generativeai>=0.8
 noisereduce>=3.0
 soundfile>=0.12
