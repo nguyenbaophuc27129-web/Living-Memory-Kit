@@ -41,19 +41,58 @@ def load_embedding_model():
     return SentenceTransformer(EMBEDDING_MODEL)
 
 
+DATA_PATH = "data/memories.json"
+
+
 @st.cache_resource
 def load_collection():
     client = chromadb.PersistentClient(path=DB_PATH)
-    return client.get_collection(COLLECTION_NAME)
+    try:
+        return client.get_collection(COLLECTION_NAME)
+    except Exception:
+        # Database chưa tồn tại (thường gặp lần đầu app chạy trên server) -> tự build
+        return _build_collection_from_json(client)
+
+
+def _build_collection_from_json(client):
+    import json
+    with open(DATA_PATH, "r", encoding="utf-8") as f:
+        dataset = json.load(f)
+
+    collection = client.get_or_create_collection(COLLECTION_NAME)
+    model = load_embedding_model()
+
+    ids, embeddings, documents, metadatas = [], [], [], []
+    for item in dataset:
+        text = item["noi_dung"]
+        ids.append(item["id"])
+        embeddings.append(model.encode(text).tolist())
+        documents.append(text)
+        metadatas.append({
+            "nhan_chung": item.get("nhan_chung", ""),
+            "chu_de": item.get("chu_de", ""),
+            "audio_path": item.get("audio_path", ""),
+            "audio_start": item.get("audio_start", 0),
+            "audio_end": item.get("audio_end", 0),
+            "nguon": item.get("nguon", ""),
+            "xac_thuc": item.get("xac_thuc", False),
+        })
+    collection.add(ids=ids, embeddings=embeddings, documents=documents, metadatas=metadatas)
+    return collection
 
 
 @st.cache_resource
 def load_gemini_client():
-    api_key = os.environ.get("GEMINI_API_KEY")
+    api_key = None
+    try:
+        api_key = st.secrets["GEMINI_API_KEY"]  # dùng khi deploy trên Streamlit Cloud
+    except Exception:
+        api_key = os.environ.get("GEMINI_API_KEY")  # dùng khi chạy local
+
     if not api_key:
         st.error(
             "Chưa cấu hình GEMINI_API_KEY. "
-            "Xem README.md để biết cách lấy key miễn phí tại aistudio.google.com."
+            "Local: xem README.md. Trên Streamlit Cloud: thêm vào mục Secrets."
         )
         st.stop()
     genai.configure(api_key=api_key)
