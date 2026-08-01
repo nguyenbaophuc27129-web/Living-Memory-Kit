@@ -1,0 +1,39 @@
+[
+  {
+  "id": "LMK-001-01",
+  "nhan_chung": "Dương Văn Thì",
+  "chu_de": "Giai đoạn du kích - Đồng Khởi 1960",
+  "noi_dung": "Năm 1959, lúc 23 tuổi, ông Dương Văn Thì vào du kích hoạt động bí mật ở địa phương. Đồng chí đã hoàn thành xuất sắc nhiệm vụ nắm tình hình địch, phục vụ cho cấp ủy địa phương lãnh đạo Đồng Khởi 1960.",
+  "audio_path": "audio/LMK-001-01.wav",
+  "audio_start": 0,
+  "audio_end": 16,
+  "tu_khoa": ["du kích", "1959", "hoạt động bí mật", "nắm tình hình địch", "Đồng Khởi 1960", "cấp ủy địa phương"],
+  "nguon": "TRƯỜNG THPT DƯƠNG VĂN THÌ",
+  "xac_thuc": true
+},
+{
+  "id": "LMK-001-02",
+  "nhan_chung": "Dương Văn Thì",
+  "chu_de": "Nhập ngũ và quá trình chiến đấu",
+  "noi_dung": "Tháng 4 năm 1966, đồng chí Dương Văn Thì nhập ngũ, vào bộ đội địa phương huyện Thủ Đức. Suốt quá trình chiến đấu, đồng chí đã trực tiếp chỉ huy và tham gia chiến đấu 125 trận, diệt và làm bị thương 258 tên địch, làm tổn thất và hư hại nhiều phương tiện, vũ khí của địch, thu về nhiều vũ khí cho quân đội ta.",
+  "audio_path": "audio/LMK-001-02.wav",
+  "audio_start": 0,
+  "audio_end": 23,
+  "tu_khoa": ["nhập ngũ", "1966", "bộ đội địa phương", "huyện Thủ Đức", "chỉ huy chiến đấu", "125 trận đánh", "diệt địch", "thu vũ khí"],
+  "nguon": "TRƯỜNG THPT DƯƠNG VĂN THÌ",
+  "xac_thuc": true
+},
+{
+  "id": "LMK-001-03",
+  "nhan_chung": "Dương Văn Thì",
+  "chu_de": "Ngày mất",
+  "noi_dung": "Ngày 27 tháng 8 năm 1988, đồng chí Dương Văn Thì từ trần, cấp bậc lúc này là Thiếu tá trong Quân đội Nhân dân Việt Nam.",
+  "audio_path": "audio/LMK-001-03.wav",
+  "audio_start": 0,
+  "audio_end": 9,
+  "tu_khoa": ["từ trần", "1988", "Thiếu tá", "Quân đội Nhân dân Việt Nam"],
+  "nguon": "TRƯỜNG THPT DƯƠNG VĂN THÌ",
+  "xac_thuc": true
+}
+]
+  
